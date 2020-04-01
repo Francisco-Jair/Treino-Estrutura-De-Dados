@@ -1,4 +1,4 @@
-#include "ListaDinamica.h"
+#include "ListaDuplamenteEncadeada.h"
 
 int main()
 {

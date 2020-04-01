@@ -16,6 +16,7 @@ typedef struct data
 {
 	t_Book livros;
 	struct data *prox;
+	struct data *ant;
 } t_Date;
 
 typedef struct
@@ -23,7 +24,6 @@ typedef struct
 	t_Date *inicio;
 	t_Date *fin;
 } t_Library;
-
 
 void iniciar(t_Library *library)
 {
@@ -59,13 +59,16 @@ void AddList(t_Library *library, t_Book book)
 	{
 		library->inicio = newElemnt;
 		newElemnt->prox = NULL;
+		newElemnt->ant = NULL;
 		library->fin = newElemnt;
 	}
 	else
 	{
+		newElemnt->ant = auxEnd;
+		newElemnt->prox = NULL;
 		auxEnd->prox = newElemnt;
 		library->fin = newElemnt;
-		newElemnt->prox = NULL;
+
 	}
 }
 
@@ -147,8 +150,8 @@ void searchList(t_Library *library)
 void removerElementList(t_Library *library)
 {
 	t_Date *eliminar = library->inicio;
-	t_Date *ant = NULL;
 	char searc_book[MAX];
+	int cont = 0;
 
 	if(quantidadeDeElementos(library) == 0)
 	{
@@ -167,6 +170,8 @@ void removerElementList(t_Library *library)
 	{
 		if(!strcmp(eliminar->livros.nameBook, searc_book))
 		{
+			cont = 1;
+
 			//Se for o primeiro elemento
 			if(eliminar == library->inicio)
 			{
@@ -182,26 +187,34 @@ void removerElementList(t_Library *library)
 					library->inicio = eliminar->prox;
 					free(eliminar);
 				}
-				return;
+				break;
 			}
 
 			//Se for o ultimo elemento
 			if(eliminar == library->fin)
 			{
-				library->fin = ant;
-				ant->prox = NULL;
+				library->fin = eliminar->ant;
+				eliminar->ant->prox = NULL;
+				// ant->prox = NULL;
 				free(eliminar);
 
-				return;
+				break;
 			}
 
-			ant->prox = eliminar->prox;
+			//ant->prox = eliminar->prox;
+			eliminar->ant->prox = eliminar->prox;
 			free(eliminar);
 
-			return;
+			break;
 		}
 
-		ant = eliminar;
 		eliminar = eliminar->prox;
 	}
+
+	if(cont == 0)
+	{
+		printf("Livro nao encontrado....\n");
+		return;
+	}
 }
+
