@@ -28,7 +28,7 @@ int main()
 	{
 		printf(" 1 - Add element to the stack\n");
 		printf(" 2 - Delete element from stack\n");
-		printf(" 3 - Shows all elements of the list\n");
+		printf(" 3 - Shows elements of the stack\n");
 		printf(" 4 - Stack size\n\n");
 		printf("Escolha uma opcao: ");
 		scanf("%d", &esc);
@@ -104,17 +104,13 @@ void revomeElementStack(int *aux)
 
 void showBook(t_Livro b[], int aux)
 {
-	int i;
+	printf("ID: %d\n", b[aux].id_book);
+	printf("Name: %s\n", b[aux].nameBook);
+	printf("Author: %s\n", b[aux].nameAuthor);
+	printf("Number: %d\n", b[aux].numberStock);
+	printf("Year: %d\n", b[aux].yearLaunch);
+	printf("\n");
 
-	for(i = 0; i <= aux; i++)
-	{
-		printf("ID: %d\n", b[i].id_book);
-		printf("Name: %s\n", b[i].nameBook);
-		printf("Author: %s\n", b[i].nameAuthor);
-		printf("Number: %d\n", b[i].numberStock);
-		printf("Year: %d\n", b[i].yearLaunch);
-		printf("\n");
-	}
 }
 
 
