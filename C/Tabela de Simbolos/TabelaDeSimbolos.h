@@ -105,25 +105,7 @@ void searchElementos(Tabela *comeco)
 
 void deleteElementos(Tabela *comeco)
 {
-	t_Info *mostrar = comeco->begin;
-	t_Info *ant = NULL;
-	int key;
 
-	printf("Entre com o chave do livro: ");
-	scanf("%d", &key);
-
-	while(mostrar != NULL)
-	{
-		if(key == mostrar->livros.keys)
-		{
-			//Falta concertar a exclusão
-			ant->prox = mostrar->prox;
-			free(mostrar);
-			printf("Livro Removido!");
-			return;
-		}
-		ant = mostrar;
-		mostrar = mostrar->prox;
-	}
-	printf("Chave Inexistente");
+	comeco->begin = NULL;
+	comeco->end = NULL;
 }

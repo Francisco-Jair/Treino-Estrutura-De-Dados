@@ -12,7 +12,7 @@ int main()
 	while(1)
 	{
 		printf("1 - Cadastrar Livro\n");
-		printf("2 - Excluir Livro\n");
+		printf("2 - Limpar Tabela\n");
 		printf("3 - Mostrar Livros\n");
 		printf("4 - Pesquisar Livro\n");
 		printf("Entre com uma opc: ");
