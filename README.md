@@ -1,1 +1,1 @@
-# Estruturas de Dados em varias Linguagens de programação.
+# Treinamento em Estruturas de Dados.
